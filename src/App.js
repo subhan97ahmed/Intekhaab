@@ -4,13 +4,17 @@ import { login, logout } from './utils'
 import './global.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap"
-import getConfig from './config'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Routes,
   Link
 } from "react-router-dom";
+import Home from './Components/Home';
+import NewPoll from './Components/NewPoll';
+import PollingStation from './Components/PollingStation';
+import getConfig from './config'
 const { networkId } = getConfig(process.env.NODE_ENV || 'development')
 
 
@@ -33,6 +37,11 @@ export default function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/PollingStation' element={<PollingStation />} />
+        <Route exact path='/NewPoll' element={<NewPoll />} />
+      </Routes>
     </Router>
-  )
+  );
 }

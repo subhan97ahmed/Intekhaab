@@ -19,11 +19,19 @@ const { networkId } = getConfig(process.env.NODE_ENV || 'development')
 
 
 export default function App() {
+  const changeCandidatesFunction = async (prompt) => {
+    console.log(prompt);
+    let namePair = await window.contract.getCandidatePair({ prompt: prompt });
+    localStorage.setItem("Candidate1", namePair[0]);
+    localStorage.setItem("Candidate2", namePair[1]);
+    localStorage.setItem("prompt", prompt);
+    window.location.replace(window.location.href + "PollingStation");
+  };
   return (
     <Router>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="/">Intekhaab</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mx-auto">
@@ -38,7 +46,7 @@ export default function App() {
         </Container>
       </Navbar>
       <Routes>
-        <Route exact path='/' element={<Home />} />
+        <Route exact path='/' element={<Home changeCandidates={changeCandidatesFunction}/>} />
         <Route exact path='/PollingStation' element={<PollingStation />} />
         <Route exact path='/NewPoll' element={<NewPoll />} />
       </Routes>

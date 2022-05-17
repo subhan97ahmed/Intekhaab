@@ -50,7 +50,7 @@ const NewPoll = (props) => {
           <Form.Label>Candidate 1 Image URL</Form.Label>
           <Form.Control
             ref={candidateName1URL}
-            placeholder='enter Image URL'
+            placeholder='Enter Image URL'
           ></Form.Control>
         </Form.Group>
 
@@ -66,7 +66,7 @@ const NewPoll = (props) => {
           <Form.Label>Candidate 2 Image URL</Form.Label>
           <Form.Control
             ref={candidateName2URL}
-            placeholder='enter Image URL'
+            placeholder='Enter Image URL'
           ></Form.Control>
         </Form.Group>
 

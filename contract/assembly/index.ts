@@ -83,6 +83,22 @@ export function addCandidatePair(
 ): void {
   CandidatePair.set(prompt, [name1, name2]);
 }
+export function addToPromptArray(prompt:string):void{
+  logging.log('added to prompt array')
+  if(PromptArray.contains("AllArrays")){
+    logging.log('add addition to prompt array')
+    let tempArray=PromptArray.getSome("AllArrays")
+    tempArray.push(prompt)
+    PromptArray.set("AllArrays",tempArray);
+  }else{
+    PromptArray.set("AllArrays",[prompt])
+  }
+}
+
+export function clearPromptArray():void{
+  logging.log('clearing prompt array');
+  PromptArray.delete("AllArrays")
+}
 export function addVote(prompt: string, index: i32): void {
   if (VoteArray.contains(prompt)) {
     let tempArray = VoteArray.getSome(prompt);

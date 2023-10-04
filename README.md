@@ -1,102 +1,96 @@
-Intekhaab
-==================
+# Intekhaab: NEAR-Powered Blockchain Voting App
 
-This [React] app was initialized with [create-near-app]
+## Table of Contents
 
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Setup and Installation](#setup-and-installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-Quick Start
-===========
+## Introduction
 
-To run this project locally:
+Welcome to Intekhaab, a cutting-edge blockchain voting application powered by the NEAR Protocol! This README provides an overview of Intekhaab, its features, the technologies used, setup instructions, and how to use it effectively.
 
-1. Prerequisites: Make sure you've installed [Node.js] ≥ 12
-2. Install dependencies: `npm install`
-3. Run the local development server: `npm run dev` (see `package.json` for a
-   full list of `scripts` you can run with `npm`)
+Intekhaab is a secure and transparent voting platform designed to transform the voting process. It leverages the NEAR Protocol to ensure the security, transparency, and accessibility of every vote. With Intekhaab, users can cast their votes securely from any device, while the NEAR blockchain guarantees the immutability and tamper-proof nature of the voting data.
 
-Now you'll have a local development environment backed by the NEAR TestNet!
+## Features
 
-Go ahead and play with the app and the code. As you make code changes, the app will automatically reload.
+Intekhaab offers the following key features:
 
+1. **Secure Voting:** Utilize the NEAR Protocol's secure blockchain infrastructure to safeguard the integrity of votes.
 
-Exploring The Code
-==================
+2. **User Authentication:** Ensure that only eligible voters can participate by implementing robust authentication methods.
 
-1. The "backend" code lives in the `/contract` folder. See the README there for
-   more info.
-2. The frontend code lives in the `/src` folder. `/src/index.html` is a great
-   place to start exploring. Note that it loads in `/src/index.js`, where you
-   can learn how the frontend connects to the NEAR blockchain.
-3. Tests: there are different kinds of tests for the frontend and the smart
-   contract. See `contract/README` for info about how it's tested. The frontend
-   code gets tested with [jest]. You can run both of these at once with `npm
-   run test`.
+3. **Transparent Results:** Make voting results publicly available on the NEAR blockchain, providing transparency in the electoral process.
 
+4. **Privacy:** Protect voter privacy using cryptographic techniques, preventing unauthorized access to individual votes.
 
-Deploy
-======
+5. **User-Friendly Interface:** Provide an intuitive and user-friendly interface for voters to easily cast their ballots.
 
-Every smart contract in NEAR has its [own associated account][NEAR accounts]. When you run `npm run dev`, your smart contract gets deployed to the live NEAR TestNet with a throwaway account. When you're ready to make it permanent, here's how.
+## Technologies
 
+Intekhaab is built using the following technologies:
 
-Step 0: Install near-cli (optional)
--------------------------------------
+- **React:** A popular JavaScript library for building user interfaces.
+- **NEAR Protocol:** The app uses the NEAR blockchain to securely store and manage voting data.
+- **NEAR Smart Contracts:** Custom NEAR smart contracts are employed to facilitate secure and transparent voting.
+- **web3.js:** A library for interacting with NEAR smart contracts.
+- **Node.js:** The runtime environment for server-side code.
+- 
+## Setup and Installation
 
-[near-cli] is a command line interface (CLI) for interacting with the NEAR blockchain. It was installed to the local `node_modules` folder when you ran `npm install`, but for best ergonomics you may want to install it globally:
+Before using Intekhaab, make sure you have the following prerequisites:
 
-    npm install --global near-cli
+- Node.js (v14.0 or higher)
+- npm (Node Package Manager)
+- NEAR CLI (for deploying smart contracts)
+- NEAR Wallet (for interacting with the NEAR blockchain)
 
-Or, if you'd rather use the locally-installed version, you can prefix all `near` commands with `npx`
+Follow these steps to set up the project:
 
-Ensure that it's installed with `near --version` (or `npx near --version`)
+1. Clone the repository:
 
+   ```bash
+   git clone https://github.com/yourusername/intekhaab.git
+   cd intekhaab
+   
+2. Install the project dependencies:
 
-Step 1: Create an account for the contract
-------------------------------------------
+   ```bash
+   npm install
 
-Each account on NEAR can have at most one contract deployed to it. If you've already created an account such as `your-name.testnet`, you can deploy your contract to `Intekhaab.your-name.testnet`. Assuming you've already created an account on [NEAR Wallet], here's how to create `Intekhaab.your-name.testnet`:
+3. Configure the NEAR blockchain:
 
-1. Authorize NEAR CLI, following the commands it gives you:
+   - Install NEAR CLI: Follow the NEAR Protocol documentation to install the NEAR CLI and set up your NEAR account.
+   - Deploy Smart Contracts: Use NEAR CLI to deploy custom smart contracts to the NEAR blockchain.
 
-      near login
+4. Start the React app:
 
-2. Create a subaccount (replace `YOUR-NAME` below with your actual account name):
+   ```bash
+   npm start
+5. Access the app in your browser:
 
-      near create-account Intekhaab.YOUR-NAME.testnet --masterAccount YOUR-NAME.testnet
+   Open your web browser and navigate to http://localhost:3000.
 
+## Usage
+- Register as a voter with your credentials.
+- Log in with your registered credentials.
+- Cast your vote securely.
+- View election results and verify them on the NEAR blockchain.
 
-Step 2: set contract name in code
----------------------------------
+## Contributing
+Contributions to Intekhaab are welcome! If you'd like to contribute, please follow these guidelines:
 
-Modify the line in `src/config.js` that sets the account name of the contract. Set it to the account id you used above.
+- Fork the repository.
+- Create a new branch for your feature or bug fix.
+- Make your changes and commit them with clear, descriptive messages.
+- Push your branch to your forked repository.
+- Submit a pull request to the main repository, describing the changes you've made.
 
-    const CONTRACT_NAME = process.env.CONTRACT_NAME || 'Intekhaab.YOUR-NAME.testnet'
-
-
-Step 3: deploy!
----------------
-
-One command:
-
-    npm run deploy
-
-As you can see in `package.json`, this does two things:
-
-1. builds & deploys smart contract to NEAR TestNet
-2. builds & deploys frontend code to GitHub using [gh-pages]. This will only work if the project already has a repository set up on GitHub. Feel free to modify the `deploy` script in `package.json` to deploy elsewhere.
-
-
-Troubleshooting
-===============
-
-On Windows, if you're seeing an error containing `EPERM` it may be related to spaces in your path. Please see [this issue](https://github.com/zkat/npx/issues/209) for more details.
-
-
-  [React]: https://reactjs.org/
-  [create-near-app]: https://github.com/near/create-near-app
-  [Node.js]: https://nodejs.org/en/download/package-manager/
-  [jest]: https://jestjs.io/
-  [NEAR accounts]: https://docs.near.org/docs/concepts/account
-  [NEAR Wallet]: https://wallet.testnet.near.org/
-  [near-cli]: https://github.com/near/near-cli
-  [gh-pages]: https://github.com/tschaub/gh-pages
+## License
+This project is licensed under the MIT License.
+Feel free to reach out if you have any questions or need further assistance with Intekhaab!
+   
